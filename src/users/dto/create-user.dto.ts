@@ -35,7 +35,7 @@ export class UserResponseDto {
     @Expose()
     role: 'admin' | 'user';
 
-    @Exclude() // Esto excluirá el password
+    @Exclude()
     password: string;
 
     constructor(partial: Partial<UserResponseDto>) {
