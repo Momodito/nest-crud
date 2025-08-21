@@ -8,12 +8,10 @@ export class UploadService {
         file: Express.Multer.File,
         metadata: UploadMetadataDto,
     ): Promise<UploadResponseDto> {
-        // Validaciones adicionales
         if (!file) {
             throw new BadRequestException('No file provided');
         }
 
-        // Procesar el upload (aquí podrías guardar en cloud storage, etc.)
         const response: UploadResponseDto = {
             filename: file.filename || file.originalname,
             originalName: file.originalname,
@@ -28,7 +26,6 @@ export class UploadService {
         return response;
     }
 
-    // Método para generar nombre de archivo único
     generateFilename(originalName: string): string {
         const timestamp = Date.now();
         const extension = originalName.split('.').pop();

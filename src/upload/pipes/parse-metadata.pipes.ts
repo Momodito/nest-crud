@@ -12,7 +12,6 @@ export class ParseMetadataPipe implements PipeTransform {
         try {
             const metadata = JSON.parse(value);
 
-            // Validar con class-validator
             const metadataDto = Object.assign(new UploadMetadataDto(), metadata);
             const errors = await validate(metadataDto);
 

@@ -3,10 +3,9 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 
 export const multerOptions: MulterOptions = {
     limits: {
-        fileSize: 5 * 1024 * 1024, // 5MB limit
+        fileSize: 5 * 1024 * 1024,
     },
     fileFilter: (req, file, callback) => {
-        // Validar que sea imagen
         if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
             return callback(
                 new HttpException(
@@ -17,7 +16,6 @@ export const multerOptions: MulterOptions = {
             );
         }
 
-        // Validar mimetype
         if (!file.mimetype.startsWith('image/')) {
             return callback(
                 new HttpException(
